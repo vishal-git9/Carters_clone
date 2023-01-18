@@ -1,0 +1,20 @@
+// theme.js
+
+// 1. import `extendTheme` function
+import { extendTheme } from '@chakra-ui/react'
+
+// 2. Add your color mode config
+const config = {
+  initialColorMode: 'light',
+  useSystemColorMode: false,
+  fonts: {
+    heading: `'League Spartan', sans-serif`,
+    Text:`'League Spartan', sans-serif`,
+    body: `'League Spartan', sans-serif`,
+  },
+}
+
+// 3. extend the theme
+const theme = extendTheme({ config })
+
+export default theme
