@@ -250,7 +250,7 @@ function LoveCarters(){
             Show us how you
             </Heading>
             <Heading>
-            <span style={{ color: "#0EACD8" }}>  #lovecarters</span>
+            <span style={{ color: "#0EACD8" }}>#lovecarters</span>
             </Heading>
             <Text fontSize={"20px"} textAlign="center">
             And follow our new budding brand @LittlePlanet
