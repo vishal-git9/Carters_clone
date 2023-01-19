@@ -41,7 +41,7 @@ export default function Navbar() {
 
   return (
     <>
-      <Box px={4} boxShadow="rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px">
+      <Box px={4} width ="full" boxShadow="rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px" position={"fixed"} top='0' zIndex={"2000"} bgColor="white">
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -57,9 +57,9 @@ export default function Navbar() {
             <HStack
               as={'nav'}
               spacing={4}
-              display={{ base: 'none', md: 'flex' }}>
+              display={{ base: 'none', md: 'flex' }} fontWeight="600">
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link} >{link}</NavLink>
               ))}
             </HStack>
           </HStack>

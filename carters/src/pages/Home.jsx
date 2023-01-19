@@ -12,6 +12,8 @@ import {
 import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import "../styles/Home.module.css"
+import ProductAddToCart from "@/components/cards";
 
 export const HomePage = () => {
   return (
@@ -153,27 +155,27 @@ export const HomePage = () => {
             width={"200px"}
           />
           <Image
-            src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.280/content/dam/ecomm/ec_creative_carters/2023/cadence/011723/shopourfaves/car_0117_shopourfaves_HP_newarrivals.png?yocs=4E_4G_"
+            src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.282/content/dam/ecomm/ec_creative_carters/2023/cadence/011723/shopourfaves/car_0117_shopourfaves_HP_pjs.png?yocs=4E_4G_"
             alt="favourites"
             width={"200px"}
           />
           <Image
-            src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.280/content/dam/ecomm/ec_creative_carters/2023/cadence/011723/shopourfaves/car_0117_shopourfaves_HP_newarrivals.png?yocs=4E_4G_"
+            src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.282/content/dam/ecomm/ec_creative_carters/2023/cadence/011723/shopourfaves/car_0117_shopourfaves_HP_shoes.png?yocs=4E_4G_"
             alt="favourites"
             width={"200px"}
           />
           <Image
-            src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.280/content/dam/ecomm/ec_creative_carters/2023/cadence/011723/shopourfaves/car_0117_shopourfaves_HP_newarrivals.png?yocs=4E_4G_"
+            src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.282/content/dam/ecomm/ec_creative_carters/2023/cadence/011723/shopourfaves/car_0117_shopourfaves_HP_tops.png?yocs=4E_4G_"
             alt="favourites"
             width={"200px"}
           />
           <Image
-            src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.280/content/dam/ecomm/ec_creative_carters/2023/cadence/011723/shopourfaves/car_0117_shopourfaves_HP_newarrivals.png?yocs=4E_4G_"
+            src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.282/content/dam/ecomm/ec_creative_carters/2023/cadence/011723/shopourfaves/car_0117_shopourfaves_HP_bottoms.png?yocs=4E_4G_"
             alt="favourites"
             width={"200px"}
           />
           <Image
-            src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.280/content/dam/ecomm/ec_creative_carters/2023/cadence/011723/shopourfaves/car_0117_shopourfaves_HP_newarrivals.png?yocs=4E_4G_"
+            src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.282/content/dam/ecomm/ec_creative_carters/2023/cadence/011723/shopourfaves/car_0117_shopourfaves_HP_clearance.png?yocs=4E_4G_"
             alt="favourites"
             width={"200px"}
           />
@@ -209,7 +211,12 @@ export const HomePage = () => {
           width={"373px"}
         />
       </HStack>
+      <Stack flexDirection={"column"} pt="50px">
+        <Heading textAlign={"center"} fontWeight="600">
+        Don't miss these top trends
+        </Heading>
       <HomeSlides/>
+      </Stack>
       <LoveCarters/>
     </Stack>
   );
@@ -220,23 +227,41 @@ function HomeSlides(){
     return(
         <Swiper
       spaceBetween={50}
-      slidesPerView={3}
+      slidesPerView={1}
+      centeredSlides={true}
+      breakpoints={{
+        280:{
+          slidesPerView: 1,
+          spaceBetween: 90,
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 50,
+        },
+      }}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
       <SwiperSlide>
-        <Image src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.282/dw/image/v2/AAMK_PRD/on/demandware.static/-/Sites-carters_master_catalog/default/dw3e27aea4/productimages/1O541910.jpg?sw=800&sh=1000&sfrm=jpg&yocs=4E_4G_"/>
+        <ProductAddToCart/>
       </SwiperSlide>
       <SwiperSlide>
-        <Image src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.282/dw/image/v2/AAMK_PRD/on/demandware.static/-/Sites-carters_master_catalog/default/dw3e27aea4/productimages/1O541910.jpg?sw=800&sh=1000&sfrm=jpg&yocs=4E_4G_"/>
+      <ProductAddToCart/>
         </SwiperSlide>
       <SwiperSlide>
-      <Image src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.282/dw/image/v2/AAMK_PRD/on/demandware.static/-/Sites-carters_master_catalog/default/dw3e27aea4/productimages/1O541910.jpg?sw=800&sh=1000&sfrm=jpg&yocs=4E_4G_"/>
+      <ProductAddToCart/>
       </SwiperSlide>
       <SwiperSlide>
-      <Image src="https://cdn-fsly.yottaa.net/578855e22bb0ac10350002d6/www.carters.com/v~4b.282/dw/image/v2/AAMK_PRD/on/demandware.static/-/Sites-carters_master_catalog/default/dw3e27aea4/productimages/1O541910.jpg?sw=800&sh=1000&sfrm=jpg&yocs=4E_4G_"/>
+      <ProductAddToCart/>
       </SwiperSlide>
-      ...
     </Swiper>
     )
 }
