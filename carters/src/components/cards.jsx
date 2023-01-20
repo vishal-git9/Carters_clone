@@ -12,14 +12,14 @@ import {
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
   import { FiShoppingCart } from 'react-icons/fi';
   
-  const data = {
-    isNew: true,
-    imageURL:"https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/AAMK_PRD/on/demandware.static/-/Sites-carters_master_catalog/default/dw9993dd44/productimages/1M701710.jpg?sw=470",
-    name: 'Baby 2-Piece Fleece Bunny Hoodie & Legging Set',
-    price: 4.5,
-    rating: 3.5,
-    numReviews: 34,
-  };
+  // const data = {
+  //   isNew: true,
+  //   imageURL:"https://edge.disstg.commercecloud.salesforce.com/dw/image/v2/AAMK_PRD/on/demandware.static/-/Sites-carters_master_catalog/default/dw9993dd44/productimages/1M701710.jpg?sw=470",
+  //   name: 'Baby 2-Piece Fleece Bunny Hoodie & Legging Set',
+  //   price: 4.5,
+  //   rating: 3.5,
+  //   numReviews: 34,
+  // };
   
   function Rating({ rating, numReviews }) {
     return (
@@ -51,15 +51,16 @@ import {
     );
   }
   
-  function ProductAddToCart() {
+  function ProductAddToCart({data}) {
     return (
-      <Flex p={50} w={{lg:"full",md:"400px",base:"200px"}} alignItems="center" justifyContent="center">
+      <Flex p={30} w={{lg:"full",md:"400px",base:"200px"}} alignItems="center" justifyContent="center">
         <Box
           bg={useColorModeValue('white', 'gray.800')}
           maxW="sm"
           borderWidth="1px"
           rounded="lg"
           shadow="lg"
+          width={"300px"}
           position="relative">
           {data.isNew && (
             <Circle
@@ -70,18 +71,18 @@ import {
               bg="red.200"
             />
           )}
-          <Box display="flex" justifyContent={"center"} width="100%" height={"300px"}>
+          <Box display="flex" justifyContent={"center"} width="100%" height={"200px"}>
           <Image
-            src={data.imageURL}
-            alt={`Picture of ${data.name}`}
+            src={data.image}
+            alt={`Picture of ${data.title}`}
             roundedTop="lg"
-            width={"300px"}
-            height="300px"
+            width={"200px"}
+            height="200px"
           />
           </Box>
           <Box p="6">
             <Box d="flex" alignItems="baseline">
-              {data.isNew && (
+              {true && (
                 <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="blue">
                   New
                 </Badge>
@@ -95,7 +96,7 @@ import {
                 as="h4"
                 lineHeight="tight"
                 isTruncated>
-                {data.name}
+                {data.title}
               </Box>
               <Tooltip
                 label="Add to cart"
@@ -110,12 +111,12 @@ import {
             </Flex>
   
             <Flex justifyContent="space-between" alignContent="center">
-              <Rating rating={data.rating} numReviews={data.numReviews} />
+              <Rating rating={data.rating} numReviews={25} />
               <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
                 <Box as="span" color={'gray.600'} fontSize="lg">
                   $
                 </Box>
-                {data.price.toFixed(2)}
+                {data.price}
               </Box>
             </Flex>
           </Box>

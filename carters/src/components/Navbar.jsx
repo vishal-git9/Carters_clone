@@ -3,7 +3,6 @@ import {
   Flex,
   Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
@@ -14,11 +13,11 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  Link,
   useColorMode
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon,MoonIcon, SunIcon  } from '@chakra-ui/icons';
 import Image from 'next/image';
-
 const Links = ['Baby', 'Toddlers', 'Kids'];
 
 const NavLink = ({ children }) => (
@@ -26,11 +25,12 @@ const NavLink = ({ children }) => (
     px={2}
     py={1}
     rounded={'md'}
+    color = {useColorModeValue('gray.700', 'white.700')}
     _hover={{
       textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
+      bg: useColorModeValue('gray.200', 'white.700'),
     }}
-    href={'#'}>
+    href={children}>
     {children}
   </Link>
 );
@@ -38,14 +38,13 @@ const NavLink = ({ children }) => (
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode()
-
   return (
     <>
-      <Box px={4} width ="full" boxShadow="rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px" position={"fixed"} top='0' zIndex={"2000"} bgColor="white">
+      <Box px={4} width ="full" boxShadow="rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px" position={"fixed"} top='0' zIndex={"2000"} bgColor={useColorModeValue('white', 'gray.700')}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            icon={isOpen ? <CloseIcon/> : <HamburgerIcon />}
             aria-label={'Open Menu'}
             display={{ md: 'none' }}
             onClick={isOpen ? onClose : onOpen}
@@ -59,7 +58,7 @@ export default function Navbar() {
               spacing={4}
               display={{ base: 'none', md: 'flex' }} fontWeight="600">
               {Links.map((link) => (
-                <NavLink key={link} >{link}</NavLink>
+                <NavLink key={link} children={link} >{link}</NavLink>
               ))}
             </HStack>
           </HStack>
@@ -98,7 +97,7 @@ export default function Navbar() {
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link} href={link}>{link}</NavLink>
               ))}
             </Stack>
           </Box>

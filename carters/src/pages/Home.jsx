@@ -14,6 +14,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "../styles/Home.module.css"
 import ProductAddToCart from "@/components/cards";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getProducts } from "@/redux/baby/baby.action";
 
 export const HomePage = () => {
   return (
@@ -224,6 +227,11 @@ export const HomePage = () => {
 
 
 function HomeSlides(){
+  const dispatch = useDispatch()
+  const data = useSelector((store)=>store.BabyProducts.data)
+  useEffect(()=>{
+    dispatch(getProducts())
+  },[dispatch])
     return(
         <Swiper
       spaceBetween={50}
@@ -250,7 +258,7 @@ function HomeSlides(){
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      <SwiperSlide>
+      {/* <SwiperSlide>
         <ProductAddToCart/>
       </SwiperSlide>
       <SwiperSlide>
@@ -261,7 +269,9 @@ function HomeSlides(){
       </SwiperSlide>
       <SwiperSlide>
       <ProductAddToCart/>
-      </SwiperSlide>
+      </SwiperSlide> */}
+
+      {data?.map((el)=> <SwiperSlide key={el.id}><ProductAddToCart key={el.id} data={el}/></SwiperSlide>)}
     </Swiper>
     )
 }
@@ -291,3 +301,4 @@ function LoveCarters(){
         </Stack>
     )
 }
+
