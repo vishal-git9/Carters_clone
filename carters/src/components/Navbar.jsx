@@ -51,7 +51,7 @@ export default function Navbar() {
           />
           <HStack spacing={8} alignItems={'center'}>
             <Box>
-                <Image src="/Diapers-logo.png" width={150} height={150} style={{objectFit:"cover"}} alt="logo"/>
+                <Link href='/'><Image src="/Diapers-logo.png" width={150} height={150} style={{objectFit:"cover"}} alt="logo"/></Link>
             </Box>
             <HStack
               as={'nav'}
