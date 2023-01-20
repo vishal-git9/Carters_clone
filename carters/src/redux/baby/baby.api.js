@@ -19,6 +19,11 @@ export async function getRatedApi(){
     const data = res.data
     return data
 }
+export async function getLatestArrival(){
+    const res  = await axios.get(`http://localhost:8080/babyGirl?new_like=true`)
+    const data = res.data
+    return data
+}
 export async function getPriceApi(price){
     const res  = await axios.get(`http://localhost:8080/babyGirl?_sort=price&_order=${price}`)
     const data = res.data

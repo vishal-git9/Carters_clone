@@ -1,6 +1,6 @@
 import React from "react";
 import Filters from "@/components/accordions";
-import { getFilteredProducts, getLatestProducts, getPricedProducts, getProducts, getRatedProducts } from "@/redux/baby/baby.action";
+import { getFilteredProducts, getPricedProducts, getProducts, getRatedProducts,getLatestProducts } from "@/redux/baby/baby.action";
 import { HStack, VStack, Stack, Box } from "@chakra-ui/react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { useEffect } from "react";
@@ -38,7 +38,7 @@ const occasions = [
 ];
 const brand = ["Carters", "oshkosh B'gosh", "skip Hop", "little planet"];
 
-const BabyPage = () => {
+const ToddlerPage = () => {
   let data = useSelector((store) => store.BabyProducts.data);
   console.log(data)
   const dispatch = useDispatch();
@@ -82,7 +82,7 @@ const BabyPage = () => {
             <MenuItem onClick={()=>getPriceApi("asc")}>Low to high</MenuItem>
             <MenuItem onClick={()=>getPriceApi("desc")}>High to low</MenuItem>
             <MenuItem onClick={getRating}>High rated</MenuItem>
-            <MenuItem  onClick={getLatest}>Latest Arrival</MenuItem>
+            <MenuItem onClick={getLatest}>Latest Arrival</MenuItem>
           </MenuList>
         </Menu>
         <Grid
@@ -105,4 +105,4 @@ const BabyPage = () => {
   );
 };
 
-export default BabyPage;
+export default ToddlerPage;

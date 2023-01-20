@@ -82,7 +82,7 @@ import {
           </Box>
           <Box p="6">
             <Box d="flex" alignItems="baseline">
-              {true && (
+              {data.new && (
                 <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="blue">
                   New
                 </Badge>
@@ -111,7 +111,7 @@ import {
             </Flex>
   
             <Flex justifyContent="space-between" alignContent="center">
-              <Rating rating={data.rating} numReviews={25} />
+              <Rating rating={data.rating} numReviews={data.reviews} />
               <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
                 <Box as="span" color={'gray.600'} fontSize="lg">
                   $
