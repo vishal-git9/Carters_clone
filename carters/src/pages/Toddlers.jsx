@@ -19,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { getPriceApi } from "@/redux/baby/baby.api";
+import Link from "next/link";
 // filters
 const categories = [
   "Pajamas",
@@ -40,10 +41,8 @@ const brand = ["Carters", "oshkosh B'gosh", "skip Hop", "little planet"];
 
 const ToddlerPage = () => {
   let data = useSelector((store) => store.BabyProducts.data);
-  console.log(data)
   const dispatch = useDispatch();
   const getFiltered = (el)=>{
-    console.log(el)
     dispatch(getFilteredProducts(el))
   }
   const getPriceApi = (sort)=>{
@@ -96,7 +95,9 @@ const ToddlerPage = () => {
         >
           {data?.map((el) => (
             <GridItem w="100%" key={el.id}>
+              <Link href={`/Baby/${el.id}`}>
               <ProductAddToCart key={el.id} data={el} />
+              </Link>
             </GridItem>
           ))}
         </Grid>

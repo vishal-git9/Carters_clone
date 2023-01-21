@@ -20,7 +20,7 @@ import { getLatestProducts } from "@/redux/baby/baby.action";
 
 export const HomePage = () => {
   return (
-    <Stack>
+    <Stack pt={"60px"}>
       {/* for building image portion */}
       <Box position={"relative"} width="100%" zIndex={"1"}>
         <Image

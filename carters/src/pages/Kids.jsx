@@ -19,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { getPriceApi } from "@/redux/baby/baby.api";
+import Link from "next/link";
 // filters
 const categories = [
   "Pajamas",
@@ -96,7 +97,9 @@ const KidsPage = () => {
         >
           {data?.map((el) => (
             <GridItem w="100%" key={el.id}>
+              <Link href={`/Kids/${el.id}`}>
               <ProductAddToCart key={el.id} data={el} />
+              </Link>
             </GridItem>
           ))}
         </Grid>

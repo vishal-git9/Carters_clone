@@ -35,8 +35,8 @@ export default function ProductDetailsPage({ data }) {
         <Flex height={"fit-content"}>
           <Swiper className="mySwiper" navigation={true} modules={[Navigation]}>
             {imgDetails?.map((el) => (
-              <SwiperSlide key={el.id}>
-                <Image key={el.id}
+              <SwiperSlide key={el}>
+                <Image
                   rounded={"md"}
                   alt={"product image"}
                   src={el}
