@@ -30,7 +30,7 @@ const NavLink = ({ children }) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'white.700'),
     }}
-    href={children}>
+    href={`/${children}`}>
     {children}
   </Link>
 );

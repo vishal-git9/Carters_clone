@@ -17,6 +17,7 @@ import {
   MenuDivider,
   Button
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { getPriceApi } from "@/redux/baby/baby.api";
 // filters
@@ -96,7 +97,9 @@ const BabyPage = () => {
         >
           {data?.map((el) => (
             <GridItem w="100%" key={el.id}>
+              <Link href={`/Baby/${el.id}`}>
               <ProductAddToCart key={el.id} data={el} />
+              </Link>
             </GridItem>
           ))}
         </Grid>

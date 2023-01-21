@@ -16,7 +16,7 @@ import "../styles/Home.module.css"
 import ProductAddToCart from "@/components/cards";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProducts } from "@/redux/baby/baby.action";
+import { getLatestProducts } from "@/redux/baby/baby.action";
 
 export const HomePage = () => {
   return (
@@ -230,7 +230,7 @@ function HomeSlides(){
   const dispatch = useDispatch()
   const data = useSelector((store)=>store.BabyProducts.data)
   useEffect(()=>{
-    dispatch(getProducts())
+    dispatch(getLatestProducts())
   },[dispatch])
     return(
         <Swiper
