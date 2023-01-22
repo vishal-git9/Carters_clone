@@ -12,7 +12,7 @@ import {
   import { FiGift } from 'react-icons/fi'
   
   export const CartProductMeta = (props) => {
-    const { isGiftWrapping = true, image, title, brand } = props
+    const { isGiftWrapping = true, image, name, category } = props
     return (
       <Stack direction="row" spacing="5" width="full">
         <Image
@@ -27,9 +27,9 @@ import {
         />
         <Box pt="4">
           <Stack spacing="0.5">
-            <Text fontWeight="medium">{title}</Text>
+            <Text fontWeight="medium">{name}</Text>
             <Text color={mode('gray.600', 'gray.400')} fontSize="sm">
-              {brand}
+              {category}
             </Text>
           </Stack>
           {isGiftWrapping && (

@@ -52,6 +52,73 @@ export const cartReducer = (state=intialState,{type,payload})=>{
                 Cart:[...state.Cart,payload]
             }
         }
+        case DELETE_ITEM_ERROR:{
+            return{
+                ...state,
+                loading:true,
+                error:true,
+            }
+        }
+        case DELETE_ITEM_LOADING:{
+            return{
+                ...state,
+                loading:true,
+                error:false,
+            }
+        }
+        case DELETE_ITEM_SUCCESS:{
+            return{
+                ...state,
+                loading:false,
+                error:false,
+                Cart:payload
+            }
+        }
+        case INC_ITEM_QUANTITY_ERROR:{
+            return{
+                ...state,
+                loading:false,
+                error:true,
+            }
+        }
+        case INC_ITEM_QUANTITY_LOADING:{
+            return{
+                ...state,
+                loading:true,
+                error:false,
+            }
+        }
+        case INC_ITEM_QUANTITY_SUCCESS:{
+            return{
+                ...state,
+                loading:false,
+                error:false,
+                Cart:payload
+            }
+        }
+
+        case DEC_ITEM_QUANTITY_LOADING:{
+            return{
+                ...state,
+                loading:true,
+                error:false,
+            }
+        }
+        case DEC_ITEM_QUANTITY_ERROR:{
+            return{
+                ...state,
+                loading:false,
+                error:true,
+            }
+        }
+        case DEC_ITEM_QUANTITY_SUCCESS:{
+            return{
+                ...state,
+                loading:false,
+                error:false,
+                Cart:payload
+            }
+        }
 
         default:{
             return state

@@ -1,34 +1,35 @@
-import { CloseButton, Flex, Link, Select, useColorModeValue } from '@chakra-ui/react'
+import { Button, CloseButton, Flex, Link, Select, useColorModeValue,Stack } from '@chakra-ui/react'
 import * as React from 'react'
 import { PriceTag } from './PriceTag'
 import { CartProductMeta } from './CartProductMeta'
 const QuantitySelect = (props) => {
+  const {incQuantity,decQuantity,value,id} = props
   return (
-    <Select
-      maxW="64px"
-      aria-label="Select quantity"
+    <Flex
+      maxW="fit-content"
+      aria-label="Select quantity" display={"flex"} justifyContent={"center"} alignItems="center" gap="10px"
       focusBorderColor={useColorModeValue('blue.500', 'blue.200')}
-      {...props}
     >
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </Select>
+      <Button isDisabled={value===1} fontWeight={"bold"} fontSize="25px" textAlign={"center"} onClick={()=>decQuantity(id,value-1)}>-</Button>
+      <span>{value}</span>
+      <Button fontWeight={"bold"} fontSize="20px" textAlign={"center"} onClick={()=>incQuantity(id,value+1)}>+</Button>
+    </Flex>
   )
 }
 
 export const CartItem = (props) => {
   const {
     isGiftWrapping,
+    id,
     title,
     category,
     quantity,
     image,
     currency,
     price,
-    onChangeQuantity,
     onClickDelete,
+    incQuantity,
+    decQuantity
   } = props
   return (
     <Flex
@@ -57,12 +58,12 @@ export const CartItem = (props) => {
       >
         <QuantitySelect
           value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value)
-          }}
+          id = {id}
+          incQuantity = {incQuantity}
+          decQuantity = {decQuantity}
         />
         <PriceTag price={price} currency={currency} />
-        <CloseButton aria-label={`Delete ${name} from cart`} onClick={onClickDelete} />
+        <CloseButton aria-label={`Delete ${title} from cart`} onClick={()=>onClickDelete(id)} />
       </Flex>
 
       {/* Mobile */}
@@ -76,14 +77,12 @@ export const CartItem = (props) => {
           md: 'none',
         }}
       >
-        <Link fontSize="sm" textDecor="underline">
-          Delete
-        </Link>
+        <CloseButton aria-label={`Delete ${title} from cart`} onClick={()=>onClickDelete(id)} />
         <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value)
-          }}
+          value={quantity} 
+          id = {id}
+          incQuantity = {incQuantity}
+          decQuantity = {decQuantity}
         />
         <PriceTag price={price} currency={currency} />
       </Flex>

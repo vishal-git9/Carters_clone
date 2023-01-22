@@ -3,7 +3,7 @@ import { GET_BABY_PRODUCTS_SUCCESS,GET_BABY_PRODUCTS_ERROR,GET_BABY_PRODUCTS_LOA
 const intialState = {
     data:[],
     error:false,
-    loading:true
+    loading:false
 }
 
 export const Babyreducer = (state=intialState,{type,payload})=>{

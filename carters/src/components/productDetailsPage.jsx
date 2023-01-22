@@ -22,16 +22,22 @@ import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { Swiper, SwiperSlide, } from "swiper/react";
 import { Navigation } from "swiper";
 import { MdLocalShipping } from "react-icons/md";
-
+import {BiArrowBack} from "react-icons/bi"
+import { useRouter } from "next/router";
 export default function ProductDetailsPage({ data,AddtoCart }) {
   let imgDetails = data.imageDetails;
+  const router = useRouter()
   return (
-    <Container maxW={"7xl"}>
+    <Container maxW={"7xl"} position="relative">
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 18, md: 24 }}
+        pt="70px"
       >
+        <Stack position={"absolute"} bgColor="gray.100" width={"30px"} height="30px" alignItems={"center"} justifyContent="center" borderRadius={"50%"} top={{lg:"40px",base:"30px"}} fontSize={{base:"25px",lg:"30px"}} left="10px" zIndex={"1000"} cursor="pointer" >
+          <BiArrowBack onClick={()=>router.back()}/>
+        </Stack>
         <Flex height={"fit-content"}>
           <Swiper className="mySwiper" navigation={true} modules={[Navigation]}>
             {imgDetails?.map((el) => (
