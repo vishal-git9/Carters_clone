@@ -1,4 +1,4 @@
-import { getCartProducts } from '@/redux/cart/cart.actions'
+import { deleteCartProducts, getCartProducts, increaseQuantity,decreaseQuantity } from '@/redux/cart/cart.actions'
 import {
     Box,
     Flex,
@@ -6,9 +6,11 @@ import {
     HStack,
     Link,
     Stack,
+    Text,
     useColorModeValue as mode,
   } from '@chakra-ui/react'
   import { Spinner } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
   import * as React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
   import { CartItem } from '../components/cart/cartItem'
@@ -16,13 +18,23 @@ import { useDispatch, useSelector } from 'react-redux'
   
  const Cart = () => {
   const cartData = useSelector((store)=>store.CartData.Cart)
-  let load = useSelector((store)=>store.CartData.loading)
-  const [loading,setloading] = React.useState(load)
-  console.log(loading)
+  let loading = useSelector((store)=>store.CartData.loading)
   const dispatch = useDispatch()
+  const router = useRouter()
   React.useEffect(()=>{
     dispatch(getCartProducts())
   },[dispatch])
+  const onClickDelete = (id)=>{
+    dispatch(deleteCartProducts(id))
+  }
+  const incQuantity = (id,value)=>{
+    dispatch(increaseQuantity(id,value))
+    dispatch(getCartProducts())
+  }
+  const decQuantity = (id,value)=>{
+    dispatch(decreaseQuantity(id,value))
+    dispatch(getCartProducts())
+  }
   return !loading?(
     <Box
       maxW={{
@@ -63,12 +75,12 @@ import { useDispatch, useSelector } from 'react-redux'
           flex="2"
         >
           <Heading fontSize="2xl" fontWeight="extrabold">
-            Shopping Cart ({cartData.length})
+            Shopping Cart ({cartData?.length || 0})
           </Heading>
   
           <Stack spacing="6">
             {cartData?.map((item) => (
-              <CartItem key={item.id} {...item} />
+              <CartItem key={item.id} {...item} onClickDelete={onClickDelete} incQuantity = {incQuantity} decQuantity = {decQuantity}/>
             ))}
           </Stack>
         </Stack>
@@ -77,12 +89,18 @@ import { useDispatch, useSelector } from 'react-redux'
           <CartOrderSummary cartData = {cartData}/>
           <HStack mt="6" fontWeight="semibold">
             <p>or</p>
-            <Link color={mode('blue.500', 'blue.200')}>Continue shopping</Link>
+            <Text color={mode('blue.500', 'blue.200')} cursor="pointer" onClick={()=>router.back()}>Continue shopping</Text>
           </HStack>
         </Flex>
       </Stack>
     </Box>
-  ):(console.log("hi"))
+  ):(<Stack mt="160px" justifyContent={"center"} alignItems="center"><Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'
+/></Stack>)
  }
 
   export default Cart

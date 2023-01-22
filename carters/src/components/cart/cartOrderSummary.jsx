@@ -7,6 +7,7 @@ import {
     Text,
     useColorModeValue as mode,
   } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
   import * as React from 'react'
   import { FaArrowRight } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
@@ -25,10 +26,12 @@ import { useSelector } from 'react-redux'
   
   export const CartOrderSummary = () => {
     const cartData = useSelector((store)=>store.CartData.Cart)
+    const router = useRouter()
     let Total = 0
-    cartData.forEach((el) => {
-      Total+= el.price
+    cartData?.forEach((el) => {
+      Total+= el.price*el.quantity
     });
+    console.log(Total)
     return (
       <Stack spacing="8" borderWidth="1px" rounded="lg" padding="8" width="full">
         <Heading size="md">Order Summary</Heading>
@@ -54,7 +57,7 @@ import { useSelector } from 'react-redux'
             </Text>
           </Flex>
         </Stack>
-        <Button colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />}>
+        <Button colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />} onClick={()=>router.push("/checkout")}>
           Checkout
         </Button>
       </Stack>

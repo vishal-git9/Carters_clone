@@ -12,8 +12,13 @@ export const addtoCart = async (data)=>{
 
 export const removeCart = async (id)=>{
     let res = await axios.delete(`http://localhost:8080/Cart/${id}`)
+    let data = res.data
+    return data
 }
 
-export const changeQty = async (id,data)=>{
-    let res = await axios.patch(`http://localhost:8080/Cart/${id}`,data)
+export const changeQty = async (id,val)=>{
+    let res = await axios.patch(`http://localhost:8080/Cart/${id}`,{
+        quantity: val,
+    })
+    return res
 }

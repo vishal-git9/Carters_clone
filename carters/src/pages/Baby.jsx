@@ -15,7 +15,7 @@ import {
   MenuGroup,
   MenuOptionGroup,
   MenuDivider,
-  Button
+  Button,Spinner
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -41,6 +41,7 @@ const brand = ["Carters", "oshkosh B'gosh", "skip Hop", "little planet"];
 
 const BabyPage = () => {
   let data = useSelector((store) => store.BabyProducts.data);
+  let loading = useSelector((store) => store.BabyProducts.loading);
   const dispatch = useDispatch();
   const getFiltered = (el)=>{
     dispatch(getFilteredProducts(el))
@@ -57,7 +58,7 @@ const BabyPage = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-  return (
+  return !loading? (
     <Stack
       mt={"100px"}
       display={"flex"}
@@ -105,7 +106,13 @@ const BabyPage = () => {
         </Grid>
       </Box>
     </Stack>
-  );
+  ):(<Stack mt="160px" justifyContent={"center"} alignItems="center"><Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'
+/></Stack>);
 };
 
 export default BabyPage;
