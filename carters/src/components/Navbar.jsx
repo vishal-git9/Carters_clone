@@ -22,6 +22,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import {FiShoppingCart} from "react-icons/fi"
 const Links = ["Baby", "Toddlers", "Kids"];
 
 const NavLink = ({ children }) => (
@@ -106,7 +107,12 @@ export default function Navbar() {
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems={"center"}>
+          <Flex alignItems={"center"} gap="20px">
+          <HStack>
+            <Link href="/Cart">
+              <FiShoppingCart fontSize={"25px"}/>
+              </Link>
+            </HStack>
             <HStack>
               <Button onClick={toggleColorMode} mr="1rem">
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}

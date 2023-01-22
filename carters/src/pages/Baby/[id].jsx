@@ -4,11 +4,17 @@ import React from 'react'
 import { Box } from '@chakra-ui/react'
 import { Suspense } from 'react'
 import Loading from '../loading'
+import { useDispatch } from 'react-redux'
+import { addCartProducts } from '@/redux/cart/cart.actions'
  const productDetailsPage = ({details}) => {
+    const dispatch = useDispatch()
+    const AddtoCart = ()=>{
+        dispatch(addCartProducts(details))
+    }
   return (
     <Suspense fallback={<Loading/>}>
         <Box mt={"60px"}>
-        <ProductDetailsPage data={details}/>
+        <ProductDetailsPage data={details} AddtoCart={AddtoCart}/>
         </Box>
     </Suspense>
   )

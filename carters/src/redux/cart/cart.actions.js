@@ -10,11 +10,11 @@ export const getCartProducts = ()=>async (dispatch)=>{
         dispatch({type:GET_CART_ERROR})
     }
 }
-export const addCartProducts = ()=>async (dispatch)=>{
+export const addCartProducts = (data)=>async (dispatch)=>{
     dispatch({type:ADD_TO_CART_LOADING})
     try {
-        let data = await addtoCart()
-        dispatch({type:ADD_TO_CART_SUCCESS,payload:data})
+        let res = await addtoCart(data)
+        dispatch({type:ADD_TO_CART_SUCCESS,payload:res})
     } catch {
         dispatch({type:ADD_TO_CART_ERROR})
     }
@@ -31,8 +31,8 @@ export const deleteCartProducts = (id)=>async (dispatch)=>{
 export const incQuantity = (id,data)=>async (dispatch)=>{
     dispatch({type:INC_ITEM_QUANTITY_LOADING})
     try {
-        let data = await changeQty(id,data)
-        dispatch({type:INC_ITEM_QUANTITY_SUCCESS,payload:data})
+        let res = await changeQty(id,data)
+        dispatch({type:INC_ITEM_QUANTITY_SUCCESS,payload:res})
     } catch {
         dispatch({type:INC_ITEM_QUANTITY_ERROR})
     }
@@ -40,8 +40,8 @@ export const incQuantity = (id,data)=>async (dispatch)=>{
 export const decQuantity = (id,data)=>async (dispatch)=>{
     dispatch({type:DEC_ITEM_QUANTITY_LOADING})
     try {
-        let data = await changeQty(id,data)
-        dispatch({type:DEC_ITEM_QUANTITY_SUCCESS,payload:data})
+        let res = await changeQty(id,data)
+        dispatch({type:DEC_ITEM_QUANTITY_SUCCESS,payload:res})
     } catch {
         dispatch({type:DEC_ITEM_QUANTITY_ERROR})
     }

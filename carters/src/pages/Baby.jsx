@@ -41,10 +41,8 @@ const brand = ["Carters", "oshkosh B'gosh", "skip Hop", "little planet"];
 
 const BabyPage = () => {
   let data = useSelector((store) => store.BabyProducts.data);
-  console.log(data)
   const dispatch = useDispatch();
   const getFiltered = (el)=>{
-    console.log(el)
     dispatch(getFilteredProducts(el))
   }
   const getPriceApi = (sort)=>{
