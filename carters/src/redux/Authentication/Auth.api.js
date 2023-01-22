@@ -1,17 +1,20 @@
 export function getLogin(data){
-    let res = JSON.parse(localStorage.getItem("loginUser")) || []
+    let res = JSON.parse(localStorage.getItem("loginUser"))
 
-    res.map((el)=>{
-        if(data.username===el.username){
+    let userData = res.filter((el)=>{
+        if(data.email===el.email && data.password ===el.password){
             return el
         }
     })
-
-    return null
+    if(userData.length!==0){
+        return userData
+    }else{
+        return null
+    }
 }
 
 export function signup(data){
-    let res = localStorage.getItem("loginUser") || []
+    let res = JSON.parse(localStorage.getItem("loginUser")) || []
     res.push(data)
     localStorage.setItem("loginUser",JSON.stringify(res))
 

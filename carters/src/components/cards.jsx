@@ -61,6 +61,7 @@ import {
           rounded="lg"
           shadow="lg"
           width={"300px"}
+          pt={5}
           position="relative">
           {data.isNew && (
             <Circle

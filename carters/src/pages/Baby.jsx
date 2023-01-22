@@ -73,11 +73,11 @@ const BabyPage = () => {
         <Filters title={"brand"} data={brand} filtered = {getFiltered} />
       </VStack>
       {/* for products */}
-      <Box width="75%" display={"flex"} flexDirection='column' alignItems={"flex-end"}>
+      <Box display={"flex"} flexDirection='column' alignItems={"flex-end"}>
 
         <Menu>
           <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            Filters
+            SortBy
           </MenuButton>
           <MenuList>
             <MenuItem onClick={()=>getPriceApi("asc")}>Low to high</MenuItem>
@@ -94,6 +94,8 @@ const BabyPage = () => {
           }}
           gap={4}
           width="100%"
+          alignItems={"center"}
+          justifyContent="center"
         >
           {data?.map((el) => (
             <GridItem w="100%" key={el.id}>

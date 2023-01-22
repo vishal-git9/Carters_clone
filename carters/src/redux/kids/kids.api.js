@@ -28,3 +28,12 @@ export async function getPriceApi(price){
     const data = res.data
     return data
 }
+
+// kids product details api
+
+
+export async function getProductDetails(id){
+    const res  = await axios.get(`http://localhost:8080/Kids/${id}`)
+    const data = res.data
+    return data
+}
