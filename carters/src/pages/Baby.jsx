@@ -77,7 +77,7 @@ const BabyPage = () => {
 
         <Menu>
           <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            Filters
+            SortBy
           </MenuButton>
           <MenuList>
             <MenuItem onClick={()=>getPriceApi("asc")}>Low to high</MenuItem>
