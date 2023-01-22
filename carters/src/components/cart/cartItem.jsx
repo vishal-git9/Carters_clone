@@ -21,10 +21,10 @@ const QuantitySelect = (props) => {
 export const CartItem = (props) => {
   const {
     isGiftWrapping,
-    name,
-    description,
+    title,
+    category,
     quantity,
-    imageUrl,
+    image,
     currency,
     price,
     onChangeQuantity,
@@ -40,9 +40,9 @@ export const CartItem = (props) => {
       align="center"
     >
       <CartProductMeta
-        name={name}
-        description={description}
-        image={imageUrl}
+        name={title}
+        category={category}
+        image={image}
         isGiftWrapping={isGiftWrapping}
       />
 

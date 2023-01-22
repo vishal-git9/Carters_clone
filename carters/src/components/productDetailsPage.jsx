@@ -23,7 +23,7 @@ import { Swiper, SwiperSlide, } from "swiper/react";
 import { Navigation } from "swiper";
 import { MdLocalShipping } from "react-icons/md";
 
-export default function ProductDetailsPage({ data }) {
+export default function ProductDetailsPage({ data,AddtoCart }) {
   let imgDetails = data.imageDetails;
   return (
     <Container maxW={"7xl"}>
@@ -140,6 +140,7 @@ export default function ProductDetailsPage({ data }) {
             mt={8}
             size={"lg"}
             py={"7"}
+            onClick={AddtoCart}
             bg={useColorModeValue("gray.900", "gray.50")}
             color={useColorModeValue("white", "gray.900")}
             textTransform={"uppercase"}
