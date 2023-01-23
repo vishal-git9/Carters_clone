@@ -39,7 +39,7 @@ const occasions = [
   "Birthday",
 ];
 const brand = ["Carters", "oshkosh B'gosh", "skip Hop", "little planet"];
-
+import Head from "next/head";
 const KidsPage = () => {
   let data = useSelector((store) => store.KidsProducts.data);
   let loading = useSelector((store) => store.KidsProducts.loading);
@@ -61,8 +61,13 @@ const KidsPage = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-  return !loading? (
-    <Stack
+  return (
+    <>
+    <Head>
+        <title>Kids</title>
+        <meta name="description" content="Kids clothes page " />
+      </Head>
+    {!loading? (<Stack
       mt={"100px"}
       display={"flex"}
       flexDirection={{ lg: "row", md: "row", base: "column" }}
@@ -113,7 +118,9 @@ const KidsPage = () => {
   emptyColor='gray.200'
   color='blue.500'
   size='xl'
-/></Stack>);
+/></Stack>)}
+</>
+  )
 };
 
 export default KidsPage;

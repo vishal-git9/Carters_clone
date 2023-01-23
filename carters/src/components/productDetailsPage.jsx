@@ -14,7 +14,8 @@ import {
   useColorModeValue,
   VisuallyHidden,
   List,
-  ListItem,
+  Spinner,
+  ListItem
 } from "@chakra-ui/react";
 import 'swiper/css';
 import "swiper/css/navigation";
@@ -35,7 +36,7 @@ export default function ProductDetailsPage({ data,AddtoCart }) {
         py={{ base: 18, md: 24 }}
         pt="70px"
       >
-        <Stack position={"absolute"} bgColor="gray.100" width={"30px"} height="30px" alignItems={"center"} justifyContent="center" borderRadius={"50%"} top={{lg:"40px",base:"30px"}} fontSize={{base:"25px",lg:"30px"}} left="10px" zIndex={"1000"} cursor="pointer" >
+        <Stack position={"absolute"} bgColor={useColorModeValue("gray.100", "black")} width={"30px"} height="30px" alignItems={"center"} justifyContent="center" borderRadius={"50%"} top={{lg:"40px",base:"30px"}} fontSize={{base:"25px",lg:"30px"}} left="10px" zIndex={"1000"} cursor="pointer" >
           <BiArrowBack onClick={()=>router.back()}/>
         </Stack>
         <Flex height={"fit-content"}>

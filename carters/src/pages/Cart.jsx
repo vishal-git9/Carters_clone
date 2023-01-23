@@ -9,6 +9,7 @@ import {
     Text,
     useColorModeValue as mode,
   } from '@chakra-ui/react'
+  import Head from 'next/head'
   import { Spinner } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
   import * as React from 'react'
@@ -35,8 +36,13 @@ import { useDispatch, useSelector } from 'react-redux'
     dispatch(decreaseQuantity(id,value))
     dispatch(getCartProducts())
   }
-  return !loading?(
-    <Box
+  return (
+    <>
+    <Head>
+        <title>Cart</title>
+        <meta name="description" content="diapers Cart page" />
+      </Head>
+    {!loading? (<Box
       maxW={{
         base: '3xl',
         lg: '7xl',
@@ -100,7 +106,9 @@ import { useDispatch, useSelector } from 'react-redux'
   emptyColor='gray.200'
   color='blue.500'
   size='xl'
-/></Stack>)
+/></Stack>)}
+</>
+)
  }
 
   export default Cart

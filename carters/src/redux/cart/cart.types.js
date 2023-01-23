@@ -9,11 +9,12 @@ export const ADD_TO_CART_LOADING = "ADD/loading"
 export const ADD_TO_CART_SUCCESS = "ADD/success"
 export const ADD_TO_CART_ERROR = "ADD/error"
 
-// DELETE the cart
+// DELETE item from the cart
 
 export const DELETE_ITEM_LOADING = "DELETE/loading"
 export const DELETE_ITEM_SUCCESS = "DELETE/success"
 export const DELETE_ITEM_ERROR = "DELETE/error"
+
 
 // INC THE QUANTITY
 

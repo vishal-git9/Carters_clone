@@ -15,7 +15,8 @@ import {
   MenuGroup,
   MenuOptionGroup,
   MenuDivider,
-  Button
+  Button,
+  Spinner
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { getPriceApi } from "@/redux/baby/baby.api";
@@ -38,9 +39,10 @@ const occasions = [
   "Birthday",
 ];
 const brand = ["Carters", "oshkosh B'gosh", "skip Hop", "little planet"];
-
+import Head from "next/head";
 const ToddlerPage = () => {
   let data = useSelector((store) => store.BabyProducts.data);
+  let loading = useSelector((store) => store.BabyProducts.loading);
   const dispatch = useDispatch();
   const getFiltered = (el)=>{
     dispatch(getFilteredProducts(el))
@@ -58,7 +60,12 @@ const ToddlerPage = () => {
     dispatch(getProducts());
   }, [dispatch]);
   return (
-    <Stack
+    <>
+    <Head>
+        <title>Toddlers</title>
+        <meta name="description" content="Toddler clothes page " />
+      </Head>
+    {!loading?(<Stack
       mt={"100px"}
       display={"flex"}
       flexDirection={{ lg: "row", md: "row", base: "column" }}
@@ -103,7 +110,15 @@ const ToddlerPage = () => {
         </Grid>
       </Box>
     </Stack>
-  );
+  ):(<Stack mt="160px" justifyContent={"center"} alignItems="center"><Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'
+/></Stack>)}
+</>
+)
 };
 
 export default ToddlerPage;
