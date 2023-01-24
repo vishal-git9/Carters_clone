@@ -17,8 +17,9 @@ import ProductAddToCart from "@/components/cards";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getLatestProducts } from "@/redux/baby/baby.action";
+import Home from ".";
 
-export const HomePage = () => {
+ const HomePage = () => {
   return (
     <Stack pt={"60px"}>
       {/* for building image portion */}
@@ -302,3 +303,5 @@ function LoveCarters(){
     )
 }
 
+
+export default Home
