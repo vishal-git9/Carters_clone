@@ -226,6 +226,7 @@ import Home from ".";
   );
 };
 
+export default Home
 
 function HomeSlides(){
   const dispatch = useDispatch()
@@ -302,6 +303,3 @@ function LoveCarters(){
         </Stack>
     )
 }
-
-
-export default Home
