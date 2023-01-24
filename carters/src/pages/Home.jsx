@@ -226,7 +226,7 @@ import Home from ".";
   );
 };
 
-export default Home
+export default HomePage
 
 function HomeSlides(){
   const dispatch = useDispatch()
