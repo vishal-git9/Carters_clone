@@ -256,8 +256,8 @@ function HomeSlides(){
           spaceBetween: 50,
         },
       }}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log('slide change')}
+      // onSwiper={(swiper) => console.log(swiper)}
     >
       {/* <SwiperSlide>
         <ProductAddToCart/>

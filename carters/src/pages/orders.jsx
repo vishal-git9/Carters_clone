@@ -14,6 +14,7 @@ import {
 } from "mdb-react-ui-kit";
 import Head from "next/head";
 import React, { useEffect } from "react";
+import { Spinner,Stack } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { OrderItemCard } from "@/components/orderCard";
 export default function OrderDetails3() {
@@ -38,7 +39,7 @@ export default function OrderDetails3() {
         <title>Orders</title>
         <meta name="description" content="user orders page " />
       </Head>
-      <section
+      {!loading?(<section
         className="h-100 gradient-custom"
         style={{ backgroundColor: "#eee" }}
       >
@@ -119,7 +120,17 @@ export default function OrderDetails3() {
             </MDBCol>
           </MDBRow>
         </MDBContainer>
-      </section>
+      </section>):(
+        <Stack mt="160px" justifyContent={"center"} alignItems="center">
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+        />
+      </Stack>
+      )}
     </>
   );
 }

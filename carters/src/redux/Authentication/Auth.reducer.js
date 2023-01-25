@@ -2,6 +2,7 @@ import { GET_LOGIN_DATA_SUCCESS,GET_LOGIN_DATA_LOADING,GET_LOGIN_DATA_ERROR,POST
 
 const intialState = {
     loginData:null,
+    isAuth:false
 }
 
 export const AuthReducer = (state=intialState,{type,payload})=>{
@@ -9,7 +10,8 @@ export const AuthReducer = (state=intialState,{type,payload})=>{
         case GET_LOGIN_DATA_SUCCESS:{
             return {
                 ...state,
-                loginData:payload
+                loginData:payload,
+                isAuth:true
             }
         }
         default:{

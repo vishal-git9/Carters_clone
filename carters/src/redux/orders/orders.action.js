@@ -13,7 +13,8 @@ export const addOrderProducts = (data)=>async (dispatch)=>{
     dispatch({type:ADD_TO_ORDERS_LOADING})
     try {
         let res = await addtoOrders(data)
-        dispatch({type:ADD_TO_ORDERS_SUCCESS,payload:res})
+        let orders = await getOrders()
+        dispatch({type:ADD_TO_ORDERS_SUCCESS,payload:orders})
     } catch {
         dispatch({type:ADD_TO_ORDERS_ERROR})
     }

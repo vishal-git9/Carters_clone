@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import OrderSuccesful from "@/components/confirmCheckout";
 import Head from "next/head";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CheckoutItem } from "@/components/checkout/checkoutItem";
 import { CheckoutSummaryItem } from "@/components/checkout/checkoutSummary";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,16 +24,26 @@ import { userAgent } from "next/server";
 import { useRouter } from "next/router";
 const Checkout = () => {
   const cartData = useSelector((store) => store.CartData.Cart);
+  const AuthData = useSelector((store) => store.AuthUser.isAuth);
   const loading = useSelector((store) => store.CartData.loading);
   const router = useRouter()
   const dispatch = useDispatch()
   const [ordered, setOrdered] = useState(false);
   const setOrder = () => {
     cartData?.forEach((el)=>{
+      console.log("hi");
       dispatch(addOrderProducts(el))
     })
+    console.log("orders");
     router.push("/orders")
   };
+
+  useEffect(()=>{
+    if(!AuthData){
+     router.push("/Signup")
+    }
+    return;
+  },[])
   return (
     <>
     <Head>
@@ -280,4 +290,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default Checkout
