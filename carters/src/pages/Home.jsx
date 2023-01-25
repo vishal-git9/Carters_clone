@@ -17,7 +17,7 @@ import ProductAddToCart from "@/components/cards";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getLatestProducts } from "@/redux/baby/baby.action";
-// import Home from ".";
+import Home from ".";
 
  const HomePage = () => {
   return (
@@ -225,6 +225,7 @@ import { getLatestProducts } from "@/redux/baby/baby.action";
     </Stack>
   );
 };
+export default HomePage
 
 function HomeSlides(){
   const dispatch = useDispatch()
@@ -301,5 +302,3 @@ function LoveCarters(){
         </Stack>
     )
 }
-
-export default HomePage
