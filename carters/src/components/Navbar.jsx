@@ -15,7 +15,9 @@ import {
   Stack,
   Link,
   useColorMode,
+  Skeleton
 } from "@chakra-ui/react";
+import { ErrorBoundary } from "react-error-boundary";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import { useState } from "react";
@@ -25,6 +27,7 @@ import { useRouter } from "next/router";
 import {FiShoppingCart} from "react-icons/fi"
 import { getCartProducts } from "@/redux/cart/cart.actions";
 import { getLiveUser, getLoginData, logoutUser } from "@/redux/Authentication/Auth.action";
+import { AlertBox } from "./Alert";
 const Links = ["Baby", "Toddlers", "Kids"];
 
 const NavLink = ({ children }) => (
@@ -49,6 +52,7 @@ export default function Navbar() {
   const dispatch = useDispatch()
   const AuthData = useSelector((store) => store.AuthUser.loginData);
   const cartLength = useSelector((store)=>store.CartData.Cart)
+  const loading = useSelector((store)=>store.CartData.loading)
   // const firstName = AuthData[0].firstName.split(" ")
   let Fname;
   if (AuthData != null) {
@@ -73,9 +77,9 @@ export default function Navbar() {
 
     return;
   },[dispatch])
-  return (
-    <>
-      <Box
+  return  (
+    <ErrorBoundary fallback={<AlertBox/>}>
+      {!loading? (<Box
         px={4}
         width="full"
         boxShadow="rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px"
@@ -195,7 +199,12 @@ export default function Navbar() {
             </Stack>
           </Box>
         ) : null}
-      </Box>
-    </>
-  );
+      </Box>):(
+      <Skeleton>
+      <div>contents wrapped</div>
+      <div>won't be visible</div>
+    </Skeleton>
+    )}
+    </ErrorBoundary>
+  )
 }

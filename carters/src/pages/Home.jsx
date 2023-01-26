@@ -11,6 +11,7 @@ import {
   Spinner
 } from "@chakra-ui/react";
 import React from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import "../styles/Home.module.css"
@@ -19,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getLatestProducts } from "@/redux/baby/baby.action";
 import Home from ".";
+import { AlertBox } from "@/components/Alert";
  const HomePage = () => {
   const dispatch = useDispatch()
   const data = useSelector((store)=>store.BabyProducts.data)
@@ -26,8 +28,9 @@ import Home from ".";
   useEffect(()=>{
     dispatch(getLatestProducts())
   },[dispatch])
-  return !loading? (
-    <Stack pt={"60px"}>
+  return (
+    <ErrorBoundary fallback={<AlertBox/>}>
+    {!loading?(<Stack pt={"60px"}>
       {/* for building image portion */}
       <Box position={"relative"} width="100%" zIndex={"1"}>
         <Image
@@ -229,7 +232,7 @@ import Home from ".";
       </Stack>
       <LoveCarters/>
     </Stack>
-  ):(
+  ):
     (
       <Stack mt="160px" justifyContent={"center"} alignItems="center">
         <Spinner
@@ -240,7 +243,8 @@ import Home from ".";
           size="xl"
         />
       </Stack>
-    )
+    )}
+    </ErrorBoundary>
   )
 };
 export default HomePage
