@@ -24,6 +24,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import {FiShoppingCart} from "react-icons/fi"
 import { getCartProducts } from "@/redux/cart/cart.actions";
+import { getLiveUser, getLoginData, logoutUser } from "@/redux/Authentication/Auth.action";
 const Links = ["Baby", "Toddlers", "Kids"];
 
 const NavLink = ({ children }) => (
@@ -43,7 +44,7 @@ const NavLink = ({ children }) => (
 );
 
 export default function Navbar() {
-  const [Auth, setAuth] = useState(false);
+  const [Auth,setAuth] = useState(false)
   const router = useRouter()
   const dispatch = useDispatch()
   const AuthData = useSelector((store) => store.AuthUser.loginData);
@@ -63,12 +64,12 @@ export default function Navbar() {
     } else {
       setAuth(false);
     }
-
     return;
   }, [AuthData]);
 
   useEffect(()=>{
     dispatch(getCartProducts())
+    dispatch(getLiveUser())
   },[dispatch])
   return (
     <>
@@ -143,7 +144,7 @@ export default function Navbar() {
                   <MenuItem onClick={()=>router.push("/Cart")}>Cart</MenuItem>
                   <MenuItem>whislist</MenuItem>
                   <MenuDivider />
-                  <MenuItem onClick={() => setAuth(false)}>Logout</MenuItem>
+                  <MenuItem onClick={() => dispatch(logoutUser())}>Logout</MenuItem>
                 </MenuList>
               </Menu>
             ) : (

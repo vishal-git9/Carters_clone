@@ -20,6 +20,7 @@ import { getLoginData } from '@/redux/Authentication/Auth.action'
     useEffect(()=>{
         if(loginData!=null){
             dispatch(getLoginData(loginData))
+            localStorage.setItem("liveUser",JSON.stringify(loginData))
         }
     },[loginData])
   return (

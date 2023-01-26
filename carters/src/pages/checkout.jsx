@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addOrderProducts } from "@/redux/orders/orders.action";
 import { userAgent } from "next/server";
 import { useRouter } from "next/router";
+import { deleteCartProducts } from "@/redux/cart/cart.actions";
 const Checkout = () => {
   const cartData = useSelector((store) => store.CartData.Cart);
   const AuthData = useSelector((store) => store.AuthUser.isAuth);
@@ -31,19 +32,21 @@ const Checkout = () => {
   const [ordered, setOrdered] = useState(false);
   const setOrder = () => {
     cartData?.forEach((el)=>{
-      console.log("hi");
       dispatch(addOrderProducts(el))
+    })
+    cartData?.forEach((el)=>{
+      dispatch(deleteCartProducts(el.id))
     })
     console.log("orders");
     router.push("/orders")
   };
 
-  useEffect(()=>{
-    if(!AuthData){
-     router.push("/Signup")
-    }
-    return;
-  },[])
+  // useEffect(()=>{
+  //   if(!AuthData){
+  //    router.push("/Signup")
+  //   }
+  //   return;
+  // },[])
   return (
     <>
     <Head>

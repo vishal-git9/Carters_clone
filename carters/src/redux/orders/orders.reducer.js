@@ -49,7 +49,7 @@ export const orderReducer = (state=intialState,{type,payload})=>{
                 ...state,
                 loading:false,
                 error:false,
-                Orders:[...state.Orders,payload]
+                Orders:payload
             }
         }
         default:{

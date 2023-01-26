@@ -17,9 +17,16 @@ import React, { useEffect } from "react";
 import { Spinner,Stack } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { OrderItemCard } from "@/components/orderCard";
+import { getCartProducts } from "@/redux/cart/cart.actions";
+import { getLiveUser } from "@/redux/Authentication/Auth.action";
+import { useRouter } from "next/router";
 export default function OrderDetails3() {
   const orderData = useSelector((store) => store.orderData.Orders);
   const loading = useSelector((store) => store.orderData.loading);
+  const router = useRouter()
+  const AuthData = useSelector((store) => store.AuthUser.loginData);
+  const isAuth = useSelector((store) => store.AuthUser.isAuth);
+  console.log(AuthData)
   console.log(orderData);
   const dispatch = useDispatch();
   let Total = 0
@@ -31,7 +38,12 @@ export default function OrderDetails3() {
     const  totalPaid = Total+GST-discount
     const payable = totalPaid.toFixed(2)
   useEffect(() => {
+    if(!isAuth){
+      router.push("/Signup")
+    }
     dispatch(getOrderProducts());
+    dispatch(getCartProducts())
+    dispatch(getLiveUser())
   }, [dispatch]);
   return (
     <>
@@ -50,7 +62,7 @@ export default function OrderDetails3() {
                 <MDBCardHeader className="px-4 py-5">
                   <MDBTypography tag="h5" className="text-muted mb-0">
                     Thanks for your Order,{" "}
-                    <span style={{ color: "#a8729a" }}>Anna</span>!
+                    <span style={{ color: "#a8729a",fontWeight:"bold",textTransform:"capitalize" }}>{AuthData[0]?.firstName || ""}</span>!
                   </MDBTypography>
                 </MDBCardHeader>
                 <MDBCardBody className="p-4">
