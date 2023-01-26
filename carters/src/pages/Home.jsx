@@ -20,6 +20,11 @@ import { getLatestProducts } from "@/redux/baby/baby.action";
 import Home from ".";
 
  const HomePage = () => {
+  const dispatch = useDispatch()
+  const data = useSelector((store)=>store.BabyProducts.data)
+  useEffect(()=>{
+    dispatch(getLatestProducts())
+  },[dispatch])
   return (
     <Stack pt={"60px"}>
       {/* for building image portion */}
@@ -219,7 +224,7 @@ import Home from ".";
         <Heading textAlign={"center"} fontWeight="600">
         Don't miss these top trends
         </Heading>
-      <HomeSlides/>
+      <HomeSlides data={data}/>
       </Stack>
       <LoveCarters/>
     </Stack>
@@ -227,12 +232,7 @@ import Home from ".";
 };
 export default HomePage
 
-function HomeSlides(){
-  const dispatch = useDispatch()
-  const data = useSelector((store)=>store.BabyProducts.data)
-  useEffect(()=>{
-    dispatch(getLatestProducts())
-  },[dispatch])
+function HomeSlides({data}){
     return(
         <Swiper
       spaceBetween={50}
