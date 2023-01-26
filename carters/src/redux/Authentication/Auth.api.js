@@ -1,5 +1,5 @@
 export function getLogin(data){
-    let res = JSON.parse(localStorage.getItem("loginUser"))
+    let res = JSON.parse(localStorage.getItem("loginUser")) || []
 
     let userData = res.filter((el)=>{
         if(data.email===el.email && data.password ===el.password){
