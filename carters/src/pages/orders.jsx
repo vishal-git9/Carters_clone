@@ -26,9 +26,9 @@ export default function OrderDetails3() {
   const router = useRouter()
   const AuthData = useSelector((store) => store.AuthUser.loginData);
   const isAuth = useSelector((store) => store.AuthUser.isAuth);
-  console.log(AuthData)
-  console.log(orderData);
+  console.log(isAuth)
   const dispatch = useDispatch();
+  
   let Total = 0
   const discount = 19
     orderData?.forEach((el) => {
@@ -41,9 +41,9 @@ export default function OrderDetails3() {
     if(!isAuth){
       router.push("/Signup")
     }
+    // dispatch(getLiveUser())
     dispatch(getOrderProducts());
     dispatch(getCartProducts())
-    dispatch(getLiveUser())
   }, [dispatch]);
   return (
     <>
@@ -62,7 +62,7 @@ export default function OrderDetails3() {
                 <MDBCardHeader className="px-4 py-5">
                   <MDBTypography tag="h5" className="text-muted mb-0">
                     Thanks for your Order,{" "}
-                    <span style={{ color: "#a8729a",fontWeight:"bold",textTransform:"capitalize" }}>{AuthData[0]?.firstName || ""}</span>!
+                    <span style={{ color: "#a8729a",fontWeight:"bold",textTransform:"capitalize" }}>{isAuth?AuthData[0].firstName:""}</span>!
                   </MDBTypography>
                 </MDBCardHeader>
                 <MDBCardBody className="p-4">

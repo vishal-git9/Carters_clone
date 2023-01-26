@@ -48,6 +48,7 @@ export default function Navbar() {
   const router = useRouter()
   const dispatch = useDispatch()
   const AuthData = useSelector((store) => store.AuthUser.loginData);
+  console.log("Navbar")
   const cartLength = useSelector((store)=>store.CartData.Cart)
   // const firstName = AuthData[0].firstName.split(" ")
   let Fname;
@@ -70,6 +71,8 @@ export default function Navbar() {
   useEffect(()=>{
     dispatch(getCartProducts())
     dispatch(getLiveUser())
+
+    return;
   },[dispatch])
   return (
     <>

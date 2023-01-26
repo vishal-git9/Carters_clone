@@ -57,7 +57,7 @@ import { useSelector } from 'react-redux'
             </Text>
           </Flex>
         </Stack>
-        <Button colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />} onClick={()=>router.push("/checkout")}>
+        <Button isDisabled={cartData?.length===0} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />} onClick={()=>router.push("/checkout")}>
           Checkout
         </Button>
       </Stack>

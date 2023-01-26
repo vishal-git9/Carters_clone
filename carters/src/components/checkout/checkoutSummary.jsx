@@ -26,6 +26,7 @@ import { useSelector } from 'react-redux'
   
   export const CheckoutSummaryItem = ({setOrder}) => {
     const cartData = useSelector((store)=>store.CartData.Cart)
+    console.log(cartData)
     const router = useRouter()
     let Total = 0
     cartData?.forEach((el) => {
@@ -56,7 +57,7 @@ import { useSelector } from 'react-redux'
             </Text>
           </Flex>
         </Stack>
-        <Button colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />} onClick={setOrder}>
+        <Button isDisabled={cartData?.length===0} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />} onClick={setOrder}>
           Place Order
         </Button>
       </Stack>

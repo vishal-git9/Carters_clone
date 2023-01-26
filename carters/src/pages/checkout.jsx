@@ -23,9 +23,11 @@ import { addOrderProducts } from "@/redux/orders/orders.action";
 import { userAgent } from "next/server";
 import { useRouter } from "next/router";
 import { deleteCartProducts } from "@/redux/cart/cart.actions";
+import { getLiveUser } from "@/redux/Authentication/Auth.action";
 const Checkout = () => {
   const cartData = useSelector((store) => store.CartData.Cart);
   const AuthData = useSelector((store) => store.AuthUser.isAuth);
+  console.log(AuthData)
   const loading = useSelector((store) => store.CartData.loading);
   const router = useRouter()
   const dispatch = useDispatch()
@@ -41,12 +43,15 @@ const Checkout = () => {
     router.push("/orders")
   };
 
-  // useEffect(()=>{
-  //   if(!AuthData){
-  //    router.push("/Signup")
-  //   }
-  //   return;
-  // },[])
+  useEffect(()=>{
+    if(!AuthData){
+     router.push("/Signup")
+    }else{
+      router.push("/checkout")
+    }
+    dispatch(getLiveUser())
+    return;
+  },[])
   return (
     <>
     <Head>
