@@ -1,7 +1,7 @@
 import { Button, CloseButton, Flex, Link, Select, useColorModeValue,Stack } from '@chakra-ui/react'
 import * as React from 'react'
 import { PriceTag } from './Price'
-import { CartProductMeta } from './CartProductMeta'
+import { CartProductMeta } from './cartProductMeta'
 const QuantitySelect = (props) => {
   const {incQuantity,decQuantity,value,id} = props
   return (
