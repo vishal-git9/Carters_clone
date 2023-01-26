@@ -24,7 +24,7 @@ import {
           <Stack align={'center'}>
             <Heading fontSize={'4xl'}>Sign in to your account</Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
-              to see your <Link color={'blue.400'}>cart</Link> ✌️
+              to checkout your <Link color={'blue.400'}>products</Link> ✌️
             </Text>
           </Stack>
           <Box

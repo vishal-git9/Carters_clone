@@ -224,7 +224,7 @@ import { AlertBox } from "@/components/Alert";
           width={"373px"}
         />
       </HStack>
-      <Stack flexDirection={"column"} pt="50px">
+      <Stack flexDirection={"column"}  pt="50px">
         <Heading textAlign={"center"} fontWeight="600">
         Don't miss these top trends
         </Heading>
@@ -258,7 +258,7 @@ function HomeSlides({data}){
       breakpoints={{
         280:{
           slidesPerView: 1,
-          spaceBetween: 90,
+          spaceBetween: 10,
         },
         640: {
           slidesPerView: 2,
@@ -269,7 +269,7 @@ function HomeSlides({data}){
           spaceBetween: 10,
         },
         1024: {
-          slidesPerView: 4,
+          slidesPerView: 5,
           spaceBetween: 50,
         },
       }}

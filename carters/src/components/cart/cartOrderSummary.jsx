@@ -26,12 +26,19 @@ import { useSelector } from 'react-redux'
   
   export const CartOrderSummary = () => {
     const cartData = useSelector((store)=>store.CartData.Cart)
+    const isAuth = useSelector((store) => store.AuthUser.isAuth);
     const router = useRouter()
     let Total = 0
     cartData?.forEach((el) => {
       Total+= el.price*el.quantity
     });
-    console.log(Total)
+    const checkout = ()=>{
+      if(isAuth){
+        router.push("/checkout")
+      }else{
+        router.push("/Signup")
+      }
+    }
     return (
       <Stack spacing="8" borderWidth="1px" rounded="lg" padding="8" width="full">
         <Heading size="md">Order Summary</Heading>
@@ -57,7 +64,7 @@ import { useSelector } from 'react-redux'
             </Text>
           </Flex>
         </Stack>
-        <Button isDisabled={cartData?.length===0} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />} onClick={()=>router.push("/checkout")}>
+        <Button isDisabled={cartData?.length===0} colorScheme="blue" size="lg" fontSize="md" rightIcon={<FaArrowRight />} onClick={checkout}>
           Checkout
         </Button>
       </Stack>

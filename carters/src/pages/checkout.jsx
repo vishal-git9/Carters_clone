@@ -23,11 +23,12 @@ import { addOrderProducts } from "@/redux/orders/orders.action";
 import { userAgent } from "next/server";
 import { useRouter } from "next/router";
 import { deleteCartProducts } from "@/redux/cart/cart.actions";
+import { PrivateAuthProvider } from "@/components/PrivateAuth";
 import { getLiveUser } from "@/redux/Authentication/Auth.action";
 const Checkout = () => {
   const cartData = useSelector((store) => store.CartData.Cart);
-  const AuthData = useSelector((store) => store.AuthUser.isAuth);
-  console.log(AuthData)
+  // const AuthData = useSelector((store) => store.AuthUser.isAuth);
+  // console.log(AuthData)
   const loading = useSelector((store) => store.CartData.loading);
   const router = useRouter()
   const dispatch = useDispatch()
@@ -39,21 +40,21 @@ const Checkout = () => {
     cartData?.forEach((el)=>{
       dispatch(deleteCartProducts(el.id))
     })
-    console.log("orders");
     router.push("/orders")
   };
 
-  useEffect(()=>{
-    if(!AuthData){
-     router.push("/Signup")
-    }else{
-      router.push("/checkout")
-    }
-    dispatch(getLiveUser())
-    return;
-  },[])
+  // useEffect(()=>{
+  //   if(!AuthData){
+  //    router.push("/Signup")
+  //   }else{
+  //     router.push("/checkout")
+  //   }
+  //   dispatch(getLiveUser())
+  //   return;
+  // },[])
   return (
     <>
+    <PrivateAuthProvider>
     <Head>
         <title>Checkout</title>
         <meta name="description" content="diapers Checkout page" />
@@ -294,6 +295,7 @@ const Checkout = () => {
         size="xl"
       />
     </Stack>)}
+    </PrivateAuthProvider>
     </>
   );
 };
