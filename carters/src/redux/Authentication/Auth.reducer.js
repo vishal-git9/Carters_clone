@@ -18,7 +18,7 @@ export const AuthReducer = (state=intialState,{type,payload})=>{
             return {
                 ...state,
                 loginData:payload,
-                isAuth:true
+                isAuth:payload!==null?true:false
             }
         }
         case LOGOUT_USER_DATA:{

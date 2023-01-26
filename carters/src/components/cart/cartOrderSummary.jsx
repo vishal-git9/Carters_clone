@@ -27,6 +27,7 @@ import { useSelector } from 'react-redux'
   export const CartOrderSummary = () => {
     const cartData = useSelector((store)=>store.CartData.Cart)
     const isAuth = useSelector((store) => store.AuthUser.isAuth);
+    console.log(isAuth)
     const router = useRouter()
     let Total = 0
     cartData?.forEach((el) => {

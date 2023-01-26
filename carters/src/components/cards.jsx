@@ -53,7 +53,7 @@ import {
   
   function ProductAddToCart({data}) {
     return (
-      <Flex p={30} w={{lg:"full",md:"400px",base:"200px"}} alignItems="center" justifyContent="center" ml={{base:"55px",lg:"20px"}}>
+      <Flex p={30} w={{lg:"full",md:"400px",base:"200px"}} alignItems="center" justifyContent="center" ml={{base:"95px",lg:"20px"}}>
         <Box
           bg={useColorModeValue('white', 'gray.800')}
           maxW="sm"

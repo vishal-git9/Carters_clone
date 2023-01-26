@@ -26,7 +26,6 @@ export default function OrderDetails3() {
   const router = useRouter()
   const AuthData = useSelector((store) => store.AuthUser.loginData);
   const isAuth = useSelector((store) => store.AuthUser.isAuth);
-  console.log(isAuth)
   const dispatch = useDispatch();
   
   let Total = 0
@@ -41,7 +40,6 @@ export default function OrderDetails3() {
     if(!isAuth){
       router.push("/Signup")
     }
-    // dispatch(getLiveUser())
     dispatch(getOrderProducts());
     dispatch(getCartProducts())
   }, [dispatch]);

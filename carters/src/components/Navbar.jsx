@@ -74,8 +74,6 @@ export default function Navbar() {
   useEffect(()=>{
     dispatch(getCartProducts())
     dispatch(getLiveUser())
-
-    return;
   },[dispatch])
   return  (
     <ErrorBoundary fallback={<AlertBox/>}>
@@ -146,7 +144,7 @@ export default function Navbar() {
                 </MenuButton>
                 <MenuList>
                   <MenuItem>Profile</MenuItem>
-                  <MenuItem>Orders</MenuItem>
+                  <Link href="/orders"><MenuItem>Orders</MenuItem></Link>
                   <MenuItem onClick={()=>router.push("/Cart")}>Cart</MenuItem>
                   <MenuItem>whislist</MenuItem>
                   <MenuDivider />

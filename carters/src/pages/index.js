@@ -4,10 +4,10 @@ export default function Home() {
   return (
     <div className='body'>
       <Head>
-        <title>Carters</title>
+        <title>Diapers</title>
         <meta name="description" content="diapers Homepage" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/Diapers-logo.png" />
       </Head> 
       <HomePage/>
     </div>
