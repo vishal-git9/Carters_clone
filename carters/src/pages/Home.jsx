@@ -8,6 +8,7 @@ import {
   VStack,
   Button,
   Center,
+  Spinner
 } from "@chakra-ui/react";
 import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -18,14 +19,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getLatestProducts } from "@/redux/baby/baby.action";
 import Home from ".";
-
  const HomePage = () => {
   const dispatch = useDispatch()
   const data = useSelector((store)=>store.BabyProducts.data)
+  let loading = useSelector((store) => store.BabyProducts.loading);
   useEffect(()=>{
     dispatch(getLatestProducts())
   },[dispatch])
-  return (
+  return !loading? (
     <Stack pt={"60px"}>
       {/* for building image portion */}
       <Box position={"relative"} width="100%" zIndex={"1"}>
@@ -228,7 +229,19 @@ import Home from ".";
       </Stack>
       <LoveCarters/>
     </Stack>
-  );
+  ):(
+    (
+      <Stack mt="160px" justifyContent={"center"} alignItems="center">
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+        />
+      </Stack>
+    )
+  )
 };
 export default HomePage
 
