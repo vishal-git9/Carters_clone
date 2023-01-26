@@ -14,7 +14,7 @@ import {
 import { useRouter } from 'next/router'
   import * as React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-  import { CartItem } from '../components/cart/cartItem'
+  import { CartItem } from '../components/cart/cartCard'
   import { CartOrderSummary } from '../components/cart/CartOrderSummary'
   
  const Cart = () => {

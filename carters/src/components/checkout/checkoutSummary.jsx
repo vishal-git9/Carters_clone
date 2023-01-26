@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
   import * as React from 'react'
   import { FaArrowRight } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
-  import { formatPrice } from '../cart/PriceTag'
+  import { formatPrice } from '../cart/Price'
   const OrderSummaryItem = (props) => {
     const { label, value, children } = props
     return (

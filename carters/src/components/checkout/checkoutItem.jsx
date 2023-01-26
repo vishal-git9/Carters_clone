@@ -1,6 +1,6 @@
 import { Button, CloseButton, Flex, Link, Select, useColorModeValue,Stack } from '@chakra-ui/react'
 import * as React from 'react'
-import { PriceTag } from '../cart/Pricetag'
+import { PriceTag } from '../cart/Price'
 import { CartProductMeta } from '../cart/CartProductMeta' 
 export const CheckoutItem = (props) => {
   const {
