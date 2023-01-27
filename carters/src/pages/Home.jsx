@@ -376,7 +376,6 @@ function HomeSlides({ data }) {
             color={useColorModeValue("gray.700", "white.700")}
             _hover={{
               textDecoration: "none",
-              bg: useColorModeValue("gray.200", "white.700"),
             }}
             href={`/Baby/${el.id}`}
           >
