@@ -10,7 +10,7 @@ import {
     Tooltip,
   } from '@chakra-ui/react';
   import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
-  import { FiShoppingCart } from 'react-icons/fi';
+  import {AiOutlineHeart} from "react-icons/ai"
   
   // const data = {
   //   isNew: true,
@@ -53,7 +53,7 @@ import {
   
   function ProductAddToCart({data}) {
     return (
-      <Flex p={30} w={{lg:"full",md:"400px",base:"200px"}} alignItems="center" justifyContent="center" ml={{base:"95px",lg:"20px"}}>
+      <Flex p={30} w={{lg:"full",md:"400px",base:"200px"}} alignItems="center" justifyContent="center">
         <Box
           bg={useColorModeValue('white', 'gray.800')}
           maxW="sm"
@@ -100,13 +100,13 @@ import {
                 {data.title}
               </Box>
               <Tooltip
-                label="Add to cart"
+                label="Add to Whislist"
                 bg="white"
                 placement={'top'}
                 color={'gray.800'}
                 fontSize={'1.2em'}>
                 <Box display={'flex'}>
-                  <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                  <Icon as={AiOutlineHeart} h={7} w={7} alignSelf={'center'} />
                 </Box>
               </Tooltip>
             </Flex>

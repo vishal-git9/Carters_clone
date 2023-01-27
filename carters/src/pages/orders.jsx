@@ -20,12 +20,14 @@ import { OrderItemCard } from "@/components/orderCard";
 import { getCartProducts } from "@/redux/cart/cart.actions";
 import { getLiveUser } from "@/redux/Authentication/Auth.action";
 import { useRouter } from "next/router";
+import { useAuth } from "@/Hooks/useAuth";
 export default function OrderDetails3() {
   const orderData = useSelector((store) => store.orderData.Orders);
   const loading = useSelector((store) => store.orderData.loading);
   const router = useRouter()
   const AuthData = useSelector((store) => store.AuthUser.loginData);
-  const isAuth = useSelector((store) => store.AuthUser.isAuth);
+  const isAuth = useAuth()
+  console.log(isAuth)
   const dispatch = useDispatch();
   
   let Total = 0
